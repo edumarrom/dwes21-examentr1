@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\AeropuertosController;
-use App\Http\Controllers\DepartController;
+use App\Http\Controllers\AlumnosController;
+use App\Http\Controllers\CriteriosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,3 +59,54 @@ Route::delete('/depart/{id}', [DepartController::class, 'destroy']);
 */
 Route::get('/aeropuertos', [
     AeropuertosController::class, 'index']);
+
+/*
+|--------------------------------------------------------------------------
+| Rutas de Alumnos
+|--------------------------------------------------------------------------
+| Aquí están todas las rutas necesarias para controlar la tabla "alumnos".
+|
+*/
+
+/* Create */
+Route::get('/alumnos/create', [
+    AlumnosController::class, 'create'
+]);
+
+Route::post('/alumnos', [
+    AlumnosController::class, 'store'])
+    ->name('alumnos.store')
+;
+
+/* Read */
+Route::get('/alumnos', [
+    AlumnosController::class, 'index'
+]);
+
+/* Update */
+Route::get('/alumnos/{id}/edit', [
+    AlumnosController::class, 'edit'
+]);
+
+Route::put('/alumnos/{id}', [
+    AlumnosController::class, 'update'])
+    ->name('alumnos.update')
+;
+
+/* Delete */
+Route::delete('/alumnos/{id}', [
+    AlumnosController::class, 'destroy'
+]);
+
+/*
+|--------------------------------------------------------------------------
+| Rutas de Alumnos
+|--------------------------------------------------------------------------
+| Aquí están todas las rutas necesarias para controlar la tabla "alumnos".
+|
+*/
+
+/* Read */
+Route::get('/criterios', [
+    CriteriosController::class, 'index'
+]);

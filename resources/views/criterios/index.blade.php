@@ -1,23 +1,23 @@
 <x-layout>
-    {{-- <x-depart.search/> --}}
+    <x-criterios.search/>
     <div class="flex flex-col items-center mt-4">
-        <h1 class="mb-4 text-2xl font-semibold">Aeropuertos</h1>
+        <h1 class="mb-4 text-2xl font-semibold">Criterios</h1>
         <div class="border border-gray-200 shadow">
             <table>
                 <thead class="bg-gray-50">
                     <tr>
                         @php
-                            $link = e("codigo=" . old('codigo') . "&denominacion=" . old('denominacion'));
+                            $link = e("ce=" . old('ce') . "&descripcion=" . old('descripcion'));
                         @endphp
 
                         <th class="px-6 py-2 text-xs text-gray-500">
-                            <a href="/aeropuertos?orden=codigo&{!! $link !!}">
-                                Código
+                            <a href="/alumnos?orden=ce&{!! $link !!}">
+                                Criterio
                             </a>
                         </th>
                         <th class="px-6 py-2 text-xs text-gray-500">
-                            <a href="/aeropuertos?orden=denominacion&{!! $link !!}">
-                                Denominación
+                            <a href="/alumnos?orden=descripcion&{!! $link !!}">
+                                Descripción
                             </a>
                         </th>
                         <th class="px-6 py-2 text-xs text-gray-500">
@@ -28,28 +28,28 @@
                         </th>
                     </tr>
                 </thead>
-                @foreach ($aeropuertos as $aero)
+                @foreach ($criterios as $cri)
                     <tbody class="bg-white">
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{$aero->denominacion}}
+                                    {{$cri->nombre}}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    {{$aero->localidad}}
+                                    {{$cri->nota_final}}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="/aeropuertos/{{ $aero->id }}/edit"
+                                <a href="/criterios/{{ $cri->id }}/edit"
                                     class="px-4 py-1 text-sm text-white bg-blue-400 rounded">Editar</a>
                             </td>
                             <td class="px-6 py-4">
-                                <form action="/aeropuertos/{{ $aero->id }}" method="POST">
+                                <form action="/criterios/{{ $cri->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button onclick="return confirm('¿Borrar aeropuerto?')"
+                                    <button onclick="return confirm('¿Borrar alumno?')"
                                         class="px-4 py-1 text-sm text-white bg-red-400 rounded">
                                         Borrar
                                 </form>
@@ -60,10 +60,10 @@
             </table>
         </div>
 
-        <a href="/aeropuertos/create" class=" mt-4 text-white bg-green-400 hover:bg-green-500 focus:ring-4
+        <a href="/criterios/create" class=" mt-4 text-white bg-green-400 hover:bg-green-500 focus:ring-4
             focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-            Insertar nuevo aeropuerto
+            Insertar nuevo alumno
         </a>
     </div>
-    {{ $aeropuertos->links() }}
+    {{ $criterios->links() }}
 </x-layout>
