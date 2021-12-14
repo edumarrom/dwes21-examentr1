@@ -20,6 +20,12 @@ class CreateNotasTable extends Migration
             $table->decimal('nota', 4, 2);
             $table->foreign('alumno_id')->references('id')->on('alumnos');
             $table->foreign('ccee_id')->references('id')->on('ccee');
+
+            /*
+            $table->foreignId('alumno_id')->constrained('alumnos');
+            $table->foreignId('ce_id')->constrained('ccee');
+            */
+
             $table->timestamps();
         });
     }

@@ -124,6 +124,31 @@ class AlumnosController extends Controller
         return $alumnos->first();
     }
 
+    public function criterios($id)
+    {
+        $alumno = $this->findAlumno($id);
+
+        $notas = DB::table('notas')
+            ->select('ce', DB::raw('MAX(nota) AS nota'))
+            ->join('ccee', 'ce_id', '=', 'c.id')
+            ->where('alumno_id', $id)
+            ->groupBy('ce_id', 'ce')
+            ->get();
+
+            return view('alumnos.criterios', [
+                'alumno' => $alumno,
+                'notas' => $notas,
+            ]);
+
+        /*
+        SELECT ce, max(nota) as nota
+        FROM notas
+        JOIN ccee c ON  ce_id = c.id
+        WHERE alumno_id = ?
+        GROUP BY ce_id
+        */
+    }
+
     private function validar()
     {
         $validados = request()->validate([

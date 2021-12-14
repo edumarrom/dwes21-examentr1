@@ -30,7 +30,7 @@ class CreateVAlumnosView extends Migration
     public function down()
     {
         DB::statement(
-            "DROP VIEW IF EXISTS v_alumnos CASCADE"
+            "DROP VIEW IF EXISTS v_alumnos"
         );
     }
 }

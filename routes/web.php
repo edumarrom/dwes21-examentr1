@@ -110,3 +110,8 @@ Route::delete('/alumnos/{id}', [
 Route::get('/criterios', [
     CriteriosController::class, 'index'
 ]);
+
+/* Criterios */
+Route::get('/alumnos/criterios/{id}', [
+    AlumnosController::class, 'criterios'
+]);
