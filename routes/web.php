@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AeropuertosController;
-use App\Http\Controllers\AlumnosController;
+use App\Http\Controllers\ArtistasController;
 use App\Http\Controllers\CriteriosController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,7 +62,7 @@ Route::get('/aeropuertos', [
 
 /*
 |--------------------------------------------------------------------------
-| Rutas de Alumnos
+| Rutas de Artistas
 |--------------------------------------------------------------------------
 | Aquí están todas las rutas necesarias para controlar la tabla "alumnos".
 |
@@ -70,37 +70,37 @@ Route::get('/aeropuertos', [
 
 /* Create */
 Route::get('/alumnos/create', [
-    AlumnosController::class, 'create'
+    ArtistasController::class, 'create'
 ]);
 
 Route::post('/alumnos', [
-    AlumnosController::class, 'store'])
+    ArtistasController::class, 'store'])
     ->name('alumnos.store')
 ;
 
 /* Read */
 Route::get('/alumnos', [
-    AlumnosController::class, 'index'
+    ArtistasController::class, 'index'
 ]);
 
 /* Update */
 Route::get('/alumnos/{id}/edit', [
-    AlumnosController::class, 'edit'
+    ArtistasController::class, 'edit'
 ]);
 
 Route::put('/alumnos/{id}', [
-    AlumnosController::class, 'update'])
+    ArtistasController::class, 'update'])
     ->name('alumnos.update')
 ;
 
 /* Delete */
 Route::delete('/alumnos/{id}', [
-    AlumnosController::class, 'destroy'
+    ArtistasController::class, 'destroy'
 ]);
 
 /*
 |--------------------------------------------------------------------------
-| Rutas de Alumnos
+| Rutas de Criterios
 |--------------------------------------------------------------------------
 | Aquí están todas las rutas necesarias para controlar la tabla "alumnos".
 |
@@ -113,5 +113,43 @@ Route::get('/criterios', [
 
 /* Criterios */
 Route::get('/alumnos/criterios/{id}', [
-    AlumnosController::class, 'criterios'
+    ArtistasController::class, 'criterios'
+]);
+
+/*
+|--------------------------------------------------------------------------
+| Rutas de Artistas
+|--------------------------------------------------------------------------
+| Aquí están todas las rutas necesarias para controlar la tabla "alumnos".
+|
+*/
+
+/* Create */
+Route::get('/artistas/create', [
+    ArtistasController::class, 'create'
+]);
+
+Route::post('/artistas', [
+    ArtistasController::class, 'store'])
+    ->name('artistas.store')
+;
+
+/* Read */
+Route::get('/artistas', [
+    ArtistasController::class, 'index'
+]);
+
+/* Update */
+Route::get('/artistas/{id}/edit', [
+    ArtistasController::class, 'edit'
+]);
+
+Route::put('/artistas/{id}', [
+    ArtistasController::class, 'update'])
+    ->name('artistas.update')
+;
+
+/* Delete */
+Route::delete('/artistas/{id}', [
+    ArtistasController::class, 'destroy'
 ]);
